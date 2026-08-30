@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بطاقة تنفيذ برنامج نشاط طلابي - 1448هـ</title>
+<style>
+@page{size:A4 portrait;margin:0}
+@media print{body{background:#fff}.modal{position:static;display:block;padding:0;background:#fff}.modal-head,.app{display:none}.paper{margin:0;box-shadow:none}}*{box-sizing:border-box}
+body{margin:0;background:#eef3f5;font-family:Tahoma,Arial,sans-serif;color:#073b4c}
+button,input,select,textarea{font:inherit}.app{max-width:900px;margin:auto;padding:16px}
+.panel{background:#fff;border-radius:16px;padding:18px;box-shadow:0 5px 25px #0001}
+h1{margin:0 0 6px;font-size:24px}.sub{color:#637780;margin-bottom:15px}
+.form-card{border:1px solid #c9d9de;border-radius:12px;overflow:hidden}
+.form-row{display:grid;grid-template-columns:180px 1fr;border-top:1px solid #c9d9de;min-height:52px}
+.form-row:first-child{border-top:0}.form-label{background:#d7e9ee;padding:10px;font-weight:700;display:flex;align-items:center}
+.form-value{padding:7px;display:flex;align-items:center;gap:8px}.form-value input,.form-value select,.form-value textarea{width:100%;border:1px solid #b6c8ce;border-radius:7px;padding:8px;background:#fff;color:#123f4d;outline:none}
+.form-value input:focus,.form-value select:focus,.form-value textarea:focus{border-color:#08718f;box-shadow:0 0 0 2px #08718f22}
+.triple{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:8px;width:100%}.mini label{display:block;font-size:12px;font-weight:700;margin-bottom:3px}
+textarea{min-height:80px;resize:vertical}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+button{border:0;border-radius:9px;padding:11px 18px;cursor:pointer;font-weight:700}.primary{background:#07506a;color:white}
+.secondary{background:#dcecf1;color:#07506a}.danger{background:#f3dddd;color:#8f2525}
+.sigbox{width:100%;border:1px dashed #7b9ba6;border-radius:8px;padding:7px}
+canvas{display:block;width:100%;height:125px;background:#fff;border:1px solid #d0dce0;border-radius:6px;touch-action:none}
+.sigtools{display:flex;gap:7px;margin-top:6px}.sigtools button{padding:6px 10px;font-size:12px}
+.note{font-size:12px;color:#637780;margin-top:9px}.modal{display:none;position:fixed;inset:0;background:#0009;z-index:50;overflow:auto;padding:18px}
+.modal.open{display:block}.modal-head{max-width:540px;margin:0 auto 10px;display:flex;justify-content:space-between;align-items:center;color:#fff}
+.paper{position:relative;width:540px;height:780px;margin:auto;background:#fff url("IMG_20260830_164350.jpg") center/100% 100% no-repeat center/100% 100% no-repeat;overflow:hidden}
+.ov{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:2px;color:#073b4c;font-size:11.5px;line-height:1.25}
+.ov.right{justify-content:flex-start;text-align:right}.ov.notes{align-items:flex-start;justify-content:flex-start;text-align:right;white-space:pre-wrap}
+.sig-preview{position:absolute;object-fit:contain}
+@media(max-width:600px){.app{padding:9px}.triple{grid-template-columns:1fr}.form-row{grid-template-columns:135px 1fr}.modal{padding:8px}}
+@media print{body{background:#fff}.app{display:none}.modal{display:block!important;position:static;background:#fff;padding:0;overflow:visible}.modal-head{display:none}.paper{width:210mm;height:297mm;margin:0;box-shadow:none}}
+</style></head>
+<body>
+<div class="app"><div class="panel">
+<h1>بطاقة تنفيذ برنامج نشاط طلابي — 1448هـ</h1>
+<div class="sub">نموذج إلكتروني مطابق لخانات بطاقة التنفيذ. اختر البرنامج ثم الفصل ثم باقي البيانات.</div>
+<div class="form-card">
+<!-- ترتيب الحقول حسب طلب المستخدم: الصف → اسم البرنامج → المجال → عدد الحصص → الفصل الدراسي -->
+<div class="form-row"><div class="form-label">الصف</div><div class="form-value"><select id="grade"></select></div></div>
+<div class="form-row"><div class="form-label">اسم البرنامج</div><div class="form-value"><select id="program"><option value="">اختر البرنامج</option></select></div></div>
+<div class="form-row"><div class="form-label">المجال</div><div class="form-value"><input id="domain" readonly></div></div>
+<div class="form-row"><div class="form-label">عدد حصص البرنامج</div><div class="form-value"><input id="hours" readonly></div></div>
+<div class="form-row"><div class="form-label">الفصل الدراسي</div><div class="form-value"><select id="semester"><option>الفصل الدراسي الأول</option><option>الفصل الدراسي الثاني</option><option>الفصل الدراسي الثالث</option></select></div></div>
+<div class="form-row"><div class="form-label">بداية التنفيذ</div><div class="form-value"><div class="triple">
+<div class="mini"><label>التاريخ</label><input id="startDate" type="date"></div><div class="mini"><label>الأسبوع</label><select id="startWeek"></select></div><div class="mini"><label>اليوم</label><input id="startDay" readonly></div>
+</div></div></div>
+<div class="form-row"><div class="form-label">نهاية التنفيذ</div><div class="form-value"><div class="triple">
+<div class="mini"><label>التاريخ</label><input id="endDate" type="date"></div><div class="mini"><label>الأسبوع</label><select id="endWeek"></select></div><div class="mini"><label>اليوم</label><input id="endDay" readonly></div>
+</div></div></div>
+<div class="form-row"><div class="form-label">المعلم/ة المنفذ/ة</div><div class="form-value"><input id="teacher" placeholder="اكتب اسم المعلم/ة"></div></div>
+<div class="form-row"><div class="form-label">عدد الطلبة المشاركين</div><div class="form-value"><input id="students" type="number" min="0"></div></div>
+<div class="form-row"><div class="form-label">عدد الطلبة المشاركين من ذوي الإعاقة</div><div class="form-value"><input id="disabledStudents" type="number" min="0"></div></div>
+<div class="form-row"><div class="form-label">عدد أولياء الأمور المشاركين في البرنامج</div><div class="form-value"><input id="parents" type="number" min="0"></div></div>
+<div class="form-row"><div class="form-label">أيقونة التنفيذ عبر منصة مدرستي</div><div class="form-value"><select id="platform"><option value="">لا ينطبق</option><option>بنك الإثراءات</option><option>التطوير الذاتي</option><option>قيمنا الغالية</option><option>نادي القراءة</option></select></div></div>
+<div class="form-row"><div class="form-label">عدد الشراكات المجتمعية</div><div class="form-value"><input id="partnersCount" type="number" min="0"></div></div>
+<div class="form-row"><div class="form-label">أسماء الشراكات المجتمعية</div><div class="form-value"><input id="partnersNames"></div></div>
+<div class="form-row"><div class="form-label">ملاحظات</div><div class="form-value"><textarea id="notes"></textarea></div></div>
+<div class="form-row"><div class="form-label">توقيع المعلم/ة المنفذ/ة</div><div class="form-value"><div class="sigbox"><canvas id="teacherSig" width="900" height="260"></canvas><div class="sigtools"><button class="secondary" type="button" id="clearSig">مسح التوقيع</button></div></div></div></div>
+</div>
+<div class="note">اسم رائد النشاط يُعبأ تلقائياً: <b>عبدالله الناصر</b>. تاريخا الطرفين = تاريخ نهاية التنفيذ.</div>
+<div class="actions"><button class="primary" id="previewBtn">معاينة التقرير</button><button class="primary" id="pdfBtn">حفظ PDF</button><button class="secondary" id="printBtn">طباعة</button><button class="danger" id="resetBtn">مسح النموذج</button></div>
+</div></div>
+
+<div class="modal" id="modal"><div class="modal-head"><b>معاينة بطاقة تنفيذ برنامج نشاط</b><button class="secondary" id="closeBtn">إغلاق</button></div>
+<div class="paper" id="paper">
+<!-- إحداثيات معدّلة بدقة لتطابق ملف PDF الأصلي -->
+<div class="ov" id="pProgram" style="left:56px;top:112px;width:316px;height:42px"></div>
+<div class="ov" id="pDomain" style="left:56px;top:150px;width:316px;height:26px"></div>
+<div class="ov" id="pHours" style="left:56px;top:178px;width:316px;height:25px"></div>
+<div class="ov" id="pSemester" style="left:56px;top:208px;width:316px;height:28px"></div>
+<div class="ov" id="pStartDate" style="left:56px;top:238px;width:142px;height:25px"></div><div class="ov" id="pStartWeek" style="left:198px;top:238px;width:104px;height:25px"></div><div class="ov" id="pStartDay" style="left:302px;top:238px;width:70px;height:25px"></div>
+<div class="ov" id="pEndDate" style="left:56px;top:268px;width:142px;height:25px"></div><div class="ov" id="pEndWeek" style="left:198px;top:268px;width:104px;height:25px"></div><div class="ov" id="pEndDay" style="left:302px;top:268px;width:70px;height:25px"></div>
+<div class="ov" id="pGrade" style="left:56px;top:298px;width:316px;height:27px"></div>
+<div class="ov" id="pTeacher" style="left:56px;top:330px;width:316px;height:38px"></div>
+<div class="ov" id="pStudents" style="left:56px;top:370px;width:316px;height:38px"></div>
+<div class="ov" id="pDisabled" style="left:56px;top:410px;width:316px;height:51px"></div>
+<div class="ov" id="pParents" style="left:56px;top:460px;width:118px;height:81px"></div><div class="ov right" id="pPlatform" style="left:174px;top:460px;width:198px;height:81px"></div>
+<div class="ov" id="pPartnersCount" style="left:56px;top:540px;width:152px;height:51px"></div><div class="ov" id="pPartnersNames" style="left:208px;top:540px;width:164px;height:51px"></div>
+<div class="ov notes" id="pNotes" style="left:56px;top:590px;width:316px;height:43px"></div>
+<div class="ov right" id="pTeacherName" style="left:375px;top:710px;width:95px;height:22px"></div><div class="ov right" id="pTeacherDate" style="left:375px;top:735px;width:95px;height:22px"></div><img id="pTeacherSig" class="sig-preview" style="left:375px;top:760px;width:100px;height:35px" alt="">
+<div class="ov right" style="left:86px;top:710px;width:95px;height:22px">عبدالله الناصر</div><div class="ov right" id="pLeaderDate" style="left:86px;top:735px;width:95px;height:22px"></div>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const DATA={
+  "الأول":[
+    ["المواطنة والحياة","التطوع الطالبي",4],["المواطنة والحياة","مهارات طموحة",6],["المواطنة والحياة","نموذج الأمم المتحدة",6],["المواطنة والحياة","إرث وطموح",4],["المواطنة والحياة","ريادة الأعمال",4],["المواطنة والحياة","السيرة النبوية",4],
+    ["الرياضة والصحة","منافسة المهارات الرياضية الجماعية",6],["الرياضة والصحة","منافسة المهارات الرياضية الفردية",8],["الرياضة والصحة","منافسة مهارات رياضات الدفاع عن النفس",8],["الرياضة والصحة","الرياضة والترفيه الإلكتروني",8],["الرياضة والصحة","الرياضات الذهنية",6],["الرياضة والصحة","الأولمبياد الرياضي",6],["الرياضة والصحة","الإسعافات الأولية",3],["الرياضة والصحة","اللياقة والصحة البدنية",2],["الرياضة والصحة","مهارات التحكيم الرياضي (أنا حكم)",3],["الرياضة والصحة","صحتي في بيئتي",3],
+    ["النشاط الكشفي","خيمتي الجميلة",3],["النشاط الكشفي","براعم البيئة والمجتمع",2],["النشاط الكشفي","بصمتي الكشفية",3],["النشاط الكشفي","براعم النور",2],["النشاط الكشفي","بوصلة الاكتشاف",3],["النشاط الكشفي","عاداتي الصحية الكشفية",2],["النشاط الكشفي","مهاراتي وكشفيتي",2],
+    ["الثقافة والفنون","الفن السابع (السينما)",8],["الثقافة والفنون","الفنون البصرية والتشكيلية",6],["الثقافة والفنون","الأزياء السعودية",4],["الثقافة والفنون","الثقافة الإعلامية",4],["الثقافة والفنون","الفن التراثي المعاصر",5],["الثقافة والفنون","الفنون المسرحية",8],["الثقافة والفنون","الفنون الصوتية أو الفنون الموسيقية",8],["الثقافة والفنون","حكايات مرئية (أنمي استديو)",6],["الثقافة والفنون","مهارات اللغة والتواصل الثقافي",5],["الثقافة والفنون","الكتابة الإبداعية والأدبية",4],["الثقافة والفنون","الحرف والمهن",4],["الثقافة والفنون","الخط العربي",4],
+    ["العلوم والتقنية","برنامج تطبيقات STEM",3],["العلوم والتقنية","التصميم والابتكار التقني",2],["العلوم والتقنية","الفضاء والاستكشاف العلمي",3],["العلوم والتقنية","الاستدامة وجودة الحياة",3],["العلوم والتقنية","الذكاء الاصطناعي",10],["العلوم والتقنية","إنترنت الأشياء",3],["العلوم والتقنية","الأمن السيبراني",4],["العلوم والتقنية","البحث العلمي",4],["العلوم والتقنية","حوكمة البيانات",3]
+  ],
+  "الثاني":[],
+  "الثالث":[],
+  "الرابع":[
+    ["المواطنة والحياة","التطوع الطالبي",4],["المواطنة والحياة","مهارات طموحة",4],["المواطنة والحياة","نموذج الأمم المتحدة",8],["المواطنة والحياة","قيمنا حياة",12],["المواطنة والحياة","إرث وطموح",4],["المواطنة والحياة","ريادة الأعمال",4],["المواطنة والحياة","السيرة النبوية",4],
+    ["الرياضة والصحة","منافسة المهارات الرياضية الجماعية",8],["الرياضة والصحة","منافسة المهارات الرياضية الفردية",8],["الرياضة والصحة","منافسة مهارات رياضات الدفاع عن النفس",8],["الرياضة والصحة","الرياضة والترفيه الإلكتروني",8],["الرياضة والصحة","الرياضات الذهنية",8],["الرياضة والصحة","الأولمبياد الرياضي",8],["الرياضة والصحة","الإسعافات الأولية",4],["الرياضة والصحة","اللياقة والصحة البدنية",2],["الرياضة والصحة","مهارات التحكيم الرياضي (أنا حكم)",3],["الرياضة والصحة","صحتي في بيئتي",3],
+    ["النشاط الكشفي","خشبة وحبل",12],["النشاط الكشفي","أشارك مجتمعي وأزرع شجرة",3],["النشاط الكشفي","وطني في قلبي",3],["النشاط الكشفي","كنوز الصغار",2],["النشاط الكشفي","خيمة التجارب المسلية",6],["النشاط الكشفي","طبقي الكشفي",3],["النشاط الكشفي","صافرة واصطفاف",2],
+    ["الثقافة والفنون","الفن السابع (السينما)",8],["الثقافة والفنون","الفنون البصرية والتشكيلية",6],["الثقافة والفنون","الأزياء السعودية",4],["الثقافة والفنون","الثقافة الإعلامية",4],["الثقافة والفنون","الفن التراثي المعاصر",5],["الثقافة والفنون","الفنون المسرحية",8],["الثقافة والفنون","الفنون الصوتية أو الفنون الموسيقية",8],["الثقافة والفنون","حكايات مرئية (أنمي استديو)",6],["الثقافة والفنون","مهارات اللغة والتواصل الثقافي",4],["الثقافة والفنون","الكتابة الإبداعية والأدبية",5],["الثقافة والفنون","الحرف والمهن",4],["الثقافة والفنون","الخط العربي",4],
+    ["العلوم والتقنية","برنامج تطبيقات STEM",5],["العلوم والتقنية","التصميم والابتكار التقني",5],["العلوم والتقنية","الفضاء والاستكشاف العلمي",5],["العلوم والتقنية","الاستدامة وجودة الحياة",4],["العلوم والتقنية","الذكاء الاصطناعي",10],["العلوم والتقنية","إنترنت الأشياء",4],["العلوم والتقنية","الأمن السيبراني",4],["العلوم والتقنية","البحث العلمي",4],["العلوم والتقنية","حوكمة البيانات",3]
+  ]
+};
+DATA["الثاني"]=DATA["الأول"].map(x=>[...x]);
+DATA["الثالث"]=DATA["الأول"].map(x=>[...x]);
+DATA["الخامس"]=DATA["الرابع"].map(x=>[...x]);
+DATA["السادس"]=DATA["الرابع"].map(x=>[...x]);
+const grades=["الأول","الثاني","الثالث","الرابع","الخامس","السادس"];
+const $=id=>document.getElementById(id);
+grades.forEach(g=>{const o=document.createElement("option");o.value=g;o.textContent="الصف "+g; $("grade").appendChild(o)});
+const weekNames=["الأول","الثاني","الثالث","الرابع","الخامس","السادس","السابع","الثامن","التاسع","العاشر","الحادي عشر","الثاني عشر","الثالث عشر","الرابع عشر","الخامس عشر","السادس عشر","السابع عشر","الثامن عشر"];
+["startWeek","endWeek"].forEach(id=>{weekNames.forEach((n,i)=>{const o=document.createElement("option");o.value="الأسبوع "+n;o.textContent="الأسبوع "+n;$(id).appendChild(o)});$(id).insertAdjacentHTML("afterbegin",'<option value="">اختر الأسبوع</option>')});
+function loadPrograms(){const list=DATA[$("grade").value]||[];$("program").innerHTML='<option value="">اختر البرنامج</option>';list.forEach((x,i)=>{const o=document.createElement("option");o.value=i;o.textContent=x[1];$("program").appendChild(o)});$("domain").value="";$("hours").value=""}
+function fillProgram(){const x=(DATA[$("grade").value]||[])[$("program").value];$("domain").value=x?x[0]:"";$("hours").value=x?x[2]:""}
+$("grade").addEventListener("change",loadPrograms);$("program").addEventListener("change",fillProgram);loadPrograms();
+function hijri(s){if(!s)return "";try{return new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura",{day:"2-digit",month:"2-digit",year:"numeric"}).format(new Date(s+"T12:00:00"))}catch(e){return s}}
+function weekday(s){if(!s)return "";return new Intl.DateTimeFormat("ar-SA",{weekday:"long"}).format(new Date(s+"T12:00:00"))}
+$("startDate").addEventListener("change",()=>$("startDay").value=weekday($("startDate").value));
+$("endDate").addEventListener("change",()=>$("endDay").value=weekday($("endDate").value));
+const canvas=$("teacherSig"),ctx=canvas.getContext("2d");ctx.lineWidth=4;ctx.lineCap="round";let drawing=false;
+function point(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height}}
+canvas.addEventListener("pointerdown",e=>{drawing=true;canvas.setPointerCapture(e.pointerId);const p=point(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});
+canvas.addEventListener("pointermove",e=>{if(!drawing)return;const p=point(e);ctx.lineTo(p.x,p.y);ctx.stroke()});canvas.addEventListener("pointerup",()=>drawing=false);canvas.addEventListener("pointercancel",()=>drawing=false);
+$("clearSig").onclick=()=>ctx.clearRect(0,0,canvas.width,canvas.height);
+function collect(){const end=hijri($("endDate").value),set=(id,v)=>$(id).textContent=v||"";
+set("pProgram",$("program").selectedOptions[0]?.textContent||"");set("pDomain",$("domain").value);set("pHours",$("hours").value);set("pSemester",$("semester").value);
+set("pStartDate",hijri($("startDate").value));set("pStartWeek",$("startWeek").value);set("pStartDay",$("startDay").value);
+set("pEndDate",hijri($("endDate").value));set("pEndWeek",$("endWeek").value);set("pEndDay",$("endDay").value);
+set("pGrade","الصف "+$("grade").value);set("pTeacher",$("teacher").value);set("pStudents",$("students").value);set("pDisabled",$("disabledStudents").value);
+set("pParents",$("parents").value);set("pPlatform",$("platform").value);set("pPartnersCount",$("partnersCount").value);set("pPartnersNames",$("partnersNames").value);set("pNotes",$("notes").value);
+set("pTeacherName",$("teacher").value);set("pTeacherDate",end);set("pLeaderDate",end);$("pTeacherSig").src=canvas.toDataURL("image/png")}
+$("previewBtn").onclick=()=>{collect();$("modal").classList.add("open")};$("closeBtn").onclick=()=>$("modal").classList.remove("open");
+async function makePDF(){collect();$("modal").classList.add("open");const btn=$("pdfBtn"),old=btn.textContent;btn.disabled=true;btn.textContent="جاري إنشاء PDF...";
+try{await new Promise(r=>setTimeout(r,250));const shot=await html2canvas($("paper"),{scale:2,useCORS:true,backgroundColor:"#fff",logging:false});const {jsPDF}=window.jspdf;const pdf=new jsPDF({orientation:"p",unit:"mm",format:"a4",compress:true});pdf.addImage(shot.toDataURL("image/jpeg",.94),"JPEG",0,0,210,297);const name=($("program").selectedOptions[0]?.textContent||"بطاقة_تنفيذ_برنامج").replace(/[\\/:*?"<>|]/g,"_");pdf.save(name+"_1448هـ.pdf")}catch(err){alert("تعذر إنشاء PDF تلقائياً، سيتم فتح الطباعة. اختر حفظ بصيغة PDF.");window.print()}finally{btn.disabled=false;btn.textContent=old}}
+$("pdfBtn").onclick=makePDF;$("printBtn").onclick=()=>{collect();$("modal").classList.add("open");setTimeout(()=>window.print(),250)};
+$("resetBtn").onclick=()=>{if(confirm("هل تريد مسح جميع البيانات؟"))location.reload()};
+</script></body>
+</html>
