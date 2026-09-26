@@ -58,7 +58,7 @@ canvas{display:block;width:100%;height:125px;background:#fff;border:1px solid #d
 <div class="form-row"><div class="form-label">نهاية التنفيذ</div><div class="form-value"><div class="triple">
 <div class="mini"><label>التاريخ</label><input id="endDate" type="date"></div><div class="mini"><label>الأسبوع</label><select id="endWeek"></select></div><div class="mini"><label>اليوم</label><input id="endDay" readonly></div>
 </div></div></div>
-<div class="form-row"><div class="form-label">المعلم/ة المنفذ/ة</div><div class="form-value"><input id="teacher" placeholder="اكتب اسم المعلم/ة"></div></div>
+<div class="form-row"><div class="form-label">المعلم المنفذ</div><div class="form-value"><input id="teacher" placeholder="اكتب اسم المعلم/ة"></div></div>
 <div class="form-row"><div class="form-label">عدد الطلبة المشاركين</div><div class="form-value"><input id="students" type="number" min="0"></div></div>
 <div class="form-row"><div class="form-label">عدد الطلبة المشاركين من ذوي الإعاقة</div><div class="form-value"><input id="disabledStudents" type="number" min="0"></div></div>
 <div class="form-row"><div class="form-label">عدد أولياء الأمور المشاركين في البرنامج</div><div class="form-value"><input id="parents" type="number" min="0"></div></div>
@@ -66,7 +66,7 @@ canvas{display:block;width:100%;height:125px;background:#fff;border:1px solid #d
 <div class="form-row"><div class="form-label">عدد الشراكات المجتمعية</div><div class="form-value"><input id="partnersCount" type="number" min="0"></div></div>
 <div class="form-row"><div class="form-label">أسماء الشراكات المجتمعية</div><div class="form-value"><input id="partnersNames"></div></div>
 <div class="form-row"><div class="form-label">ملاحظات</div><div class="form-value"><textarea id="notes"></textarea></div></div>
-<div class="form-row"><div class="form-label">توقيع المعلم/ة المنفذ/ة</div><div class="form-value"><div class="sigbox"><canvas id="teacherSig" width="900" height="260"></canvas><div class="sigtools"><button class="secondary" type="button" id="clearSig">مسح التوقيع</button></div></div></div></div>
+<div class="form-row"><div class="form-label">توقيع المعلم المنفذ</div><div class="form-value"><div class="sigbox"><canvas id="teacherSig" width="900" height="260"></canvas><div class="sigtools"><button class="secondary" type="button" id="clearSig">مسح التوقيع</button></div></div></div></div>
 </div>
 <div class="note">يُترك اسم رائد النشاط فارغاً حسب المطلوب. تاريخا الطرفين = تاريخ نهاية التنفيذ.</div>
 <div class="actions"><button class="primary" id="previewBtn">معاينة التقرير</button><button class="primary" id="pdfBtn">حفظ PDF</button><button class="secondary" id="printBtn">طباعة</button><button class="danger" id="resetBtn">مسح النموذج</button></div>
